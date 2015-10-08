@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="emailApp" ng-controller='emailCtrl'>
+<head>
+  <meta charset="UTF-8">
+  <title>Testy Testi</title>
+</head>
+<body>
+  <div ui-view></div>
+
+  <div>
+    <ul>
+      <li ng-repeat="email in emails">
+        <p>{{email.name}}</p>
+        <p>{{email.email}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <form ng-submit='addEmail(name, email)'>
+      <p>Name: <input ng-model='name' type="text"/> </p>
+      <p>Email: <input ng-model='email' type="text"/> </p>
+      <button type='submit'>Add Email</button>
+    </form>
+  </div>
+
+
+  <script src="./bower_components/angular/angular.js" charset="utf-8"></script>
+  <script src="./bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+  <script src="./src/module.js" charset="utf-8"></script>
+  <script src="./src/controllers/email.js" charset="utf-8"></script>
+  <script src="./src/services/email.js" charset="utf-8"></script>
+
+</body>
+</html>

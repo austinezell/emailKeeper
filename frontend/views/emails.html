@@ -1,0 +1,17 @@
+<div>
+  <ul>
+    <li ng-repeat="email in emails">
+      <p>{{email.name}}</p>
+      <p>{{email.email}}</p>
+    </li>
+  </ul>
+</div>
+
+
+<div>
+  <form ng-submit='addEmail(name, email)'>
+    <p>Name: <input ng-model="name" type="text"/> </p>
+    <p>Email: <input ng-model='email' type="text"/> </p>
+    <button type='submit'>Add Email</button>
+  </form>
+</div>
