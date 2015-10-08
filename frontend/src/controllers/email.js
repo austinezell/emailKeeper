@@ -1,5 +1,4 @@
 app.controller('emailCtrl', function($scope, Emails){
-  console.log('loaded');
   // Emails.getEmails().success(function(res){
   //   $scope.emails = res
   // });

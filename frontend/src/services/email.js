@@ -1,6 +1,9 @@
 app.service('Emails', function($http){
   this.getEmails =function(){
     $http.get('http://localhost:3000/contacts')
+    .then(function(data){
+      console.log(data);
+    })
   }
 
   this.addEmail = function(name, email){
