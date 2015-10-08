@@ -10,8 +10,8 @@
   <div>
     <ul>
       <li ng-repeat="email in emails">
-        <p>{{email.name}}</p>
-        <p>{{email.email}}</p>
+        <p>Name: {{email.name}}, email: {{email.email}}</p>
+        <a href="" ng-click="deleteEmail(email._id)">Delete</a>
       </li>
     </ul>
   </div>

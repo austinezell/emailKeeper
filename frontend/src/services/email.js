@@ -1,6 +1,10 @@
-app.service('Emails', function($http){
+app.service('Emails', function($http, $rootScope){
   this.getEmails =function(){
-    $http.get('http://localhost:3000/contacts')
+    return $http.get('http://localhost:3000/contacts')
+  }
+
+  this.deleteEmail = function (id) {
+    $http.delete('http://localhost:3000/removeContact/'+id)
     .then(function(data){
       console.log(data);
     })
