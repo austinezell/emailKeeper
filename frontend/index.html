@@ -3,27 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Testy Testi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div ui-view></div>
-
-  <div>
-    <ul>
-      <li ng-repeat="email in emails">
-        <p>Name: {{email.name}}, email: {{email.email}}</p>
-        <a href="" ng-click="deleteEmail(email._id)">Delete</a>
-      </li>
-    </ul>
-  </div>
-
-  <div>
-    <form ng-submit='addEmail(name, email)'>
-      <p>Name: <input ng-model='name' type="text"/> </p>
-      <p>Email: <input ng-model='email' type="text"/> </p>
-      <button type='submit'>Add Email</button>
-    </form>
-  </div>
-
 
   <script src="./bower_components/angular/angular.js" charset="utf-8"></script>
   <script src="./bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>

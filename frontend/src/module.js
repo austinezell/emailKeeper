@@ -1,11 +1,11 @@
-window.app = angular.module('emailApp', [])
+window.app = angular.module('emailApp', ['ui.router'])
 // ['ui.router']
-// .config(function($stateProvider, $urlRouterProvider){
-//   $urlRouterProvider.otherwise('home');
-//   $stateProvider
-//   .state('home', {
-//     url: '/emails',
-//     templateUrl : '../views/emails.html',
-//     controller : 'emailCtrl'
-//   })
-// })
+.config(function($stateProvider, $urlRouterProvider){
+  $stateProvider
+  .state('/', {
+    url: '/',
+    templateUrl : 'views/emails.html',
+    controller : 'emailCtrl'
+  })
+  $urlRouterProvider.otherwise('/');
+})

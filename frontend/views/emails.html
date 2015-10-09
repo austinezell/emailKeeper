@@ -1,17 +1,35 @@
 <div>
-  <ul>
-    <li ng-repeat="email in emails">
-      <p>{{email.name}}</p>
-      <p>{{email.email}}</p>
-    </li>
-  </ul>
-</div>
+  <div class='column'>
+    <ul>
+      <li ng-repeat="email in emails">
+        <p>Name: {{email.name}}, </p>
+        <p>Email: {{email.email}}</p>
+        <a href="" ng-click="deleteEmail(email._id)">Delete</a>
+      </li>
+    </ul>
+  </div>
 
-
-<div>
-  <form ng-submit='addEmail(name, email)'>
-    <p>Name: <input ng-model="name" type="text"/> </p>
-    <p>Email: <input ng-model='email' type="text"/> </p>
-    <button type='submit'>Add Email</button>
-  </form>
+  <div class='column'>
+    <h2>Enter a new email</h2><hr/>
+    <form ng-submit='addEmail(name, email)'>
+      <p>Name: <input ng-model='name' type="text"/> </p>
+      <p>Email: <input ng-model='email' type="text"/> </p>
+      <button type='submit'>Add Email</button>
+    </form>
+  </div>
+  <div class="column">
+    <form ng-submit='sendEmail(Email)'>
+      <p align='right'>Your Email: <input ng-model='Email.sender' type="text"/> </p>
+      <p align='right'>Subject: <input type='text' ng-model='Email.subject'/></p>
+      <textarea ng-model='Email.body' rows="8" cols="40"></textarea>
+      <p> Send email to
+        <select ng-model='Email.receiver'>
+          <option ng-repeat='email in emails' value={{email.email}}>
+            {{email.name}}
+          </option>
+        </select>
+        <button type='submit'>Send</button>
+      </p>
+    </form>
+  </div>
 </div>
