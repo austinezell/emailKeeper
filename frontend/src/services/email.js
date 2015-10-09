@@ -16,4 +16,11 @@ app.service('Emails', function($http, $rootScope){
     return $http.post('http://localhost:3000/send', email)
   }
 
+  this.validateEmail = function(email){
+    if (/(\w+\.)*\w+@((\w+\.)+\w+)/.test(email)){
+      return true;
+    }
+    return false;
+  }
+
 })

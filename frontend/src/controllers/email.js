@@ -7,11 +7,17 @@ app.controller('emailCtrl', function($scope, $rootScope, Emails) {
   }
 
   $scope.addEmail = function(name, email) {
-    Emails.addEmail(name, email).then(function(data){
-      $scope.getEmails()
-      $scope.name = ''
-      $scope.email = ''
-    })
+    if(Emails.validateEmail(email)){
+      Emails.addEmail(name, email).then(function(data){
+        $scope.getEmails()
+        $scope.name = ''
+        $scope.email = ''
+        $scope.emailMessage = "Email added!"
+      })
+    }
+    else{
+      $scope.emailMessage = "Improper Email!"
+    }
   }
 
   $scope.deleteEmail = function(id){
