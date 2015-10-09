@@ -13,10 +13,7 @@ app.service('Emails', function($http, $rootScope){
   }
 
   this.sendEmail = function(email){
-    $http.post('http://localhost:3000/send', email)
-    .then(function(data){
-      console.log(data);
-    })
+    return $http.post('http://localhost:3000/send', email)
   }
 
 })
