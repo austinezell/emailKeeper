@@ -5,6 +5,6 @@ var emailSchema = Mongoose.Schema({
   email: {type: String, required: true}
 })
 
-var Email = Mongoose.model("Email", emailSchema)
+var Contact = Mongoose.model("Contact", emailSchema)
 
-module.exports = Email
+module.exports = Contact

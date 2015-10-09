@@ -5,7 +5,7 @@ window.app = angular.module('emailApp', ['ui.router'])
   .state('/', {
     url: '/',
     templateUrl : 'views/emails.html',
-    controller : 'emailCtrl'
+    controller : 'MainCtrl'
   })
   $urlRouterProvider.otherwise('/');
 })

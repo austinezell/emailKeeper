@@ -1,15 +1,14 @@
-app.service('Emails', function($http, $rootScope){
-  this.getEmails =function(){
+app.service('Contacts', function($http, $rootScope){
+  this.getContacts =function(){
     return $http.get('http://localhost:3000/contacts')
   }
 
-  this.deleteEmail = function (id) {
+  this.deleteContact = function (id) {
     return $http.delete('http://localhost:3000/removeContact/'+id)
   }
 
-  this.addEmail = function(name, email){
-    var obj = {name: name, email: email}
-    return $http.post("http://localhost:3000/addContact", obj)
+  this.addContact = function(contact){
+    return $http.post("http://localhost:3000/addContact", contact)
   }
 
   this.sendEmail = function(email){

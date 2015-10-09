@@ -1,25 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var Email = require('../models/email')
+var Contact = require('../models/email')
 
 var api_key = process.env.MAILGUN_API;
 var domain = process.env.MAILGUN_DOMAIN;
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 router.post('/addContact', function(req, res, next){
-  Email.create(req.body, function(err, email){
+  Contact.create(req.body, function(err, email){
     res.status(err ? 400 : 200).send(err || email)
   })
 });
 
 router.get('/contacts', function(req, res, next){
-  Email.find({}, function(err, emails) {
+  Contact.find({}, function(err, emails) {
     res.status(err ? 400 : 200).send(err || emails);
   });
 })
 
 router.delete('/removeContact/:id', function(req, res, next){
-  Email.findByIdAndRemove(req.params.id, function(err, email){
+  Contact.findByIdAndRemove(req.params.id, function(err, email){
     if (err || !email){
       res.satus(400).send("error")
     }
@@ -49,7 +49,7 @@ router.post('/send', function(req, res, next){
 
 })
 
-function sendEmail(data){
+function sendContact(data){
   mailgun.messages().send(data, function (error, body) {
     if(error){
     }

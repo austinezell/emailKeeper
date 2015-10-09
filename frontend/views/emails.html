@@ -1,35 +1,87 @@
-<div>
-  <div class='column'>
+
+<div class='columns medium-4'>
+  <div class="panel">
+
+    <h2>Saved Contacts</h2>
+    <hr/>
     <ul>
-      <li ng-repeat="email in emails">
-        <p>Name: {{email.name}}, </p>
-        <p>Email: {{email.email}}</p>
-        <a href="" ng-click="deleteEmail(email._id)">Delete</a>
+      <li ng-repeat="contact in contacts">
+        <p>Name: {{contact.name}} </p>
+        <p>Email: {{contact.email}}</p>
+        <a href="" ng-click="deleteContact(contact._id)">Delete</a>
       </li>
     </ul>
   </div>
+</div>
 
-  <div class='column'>
-    <h2>Enter a new email</h2><hr/>
-    <form ng-submit='addEmail(name, email)'>
-      <p>Name: <input ng-model='name' type="text"/> </p>
-      <p>Email: <input ng-model='email' type="text"/> </p>
-      <button type='submit'>Add Email</button>
-      <p>{{emailMessage}}</p>
-    </form>
+<div class='columns medium-4'>
+  <div class="row">
+
+    <div class="panel callout">
+      <h2>Add a contact</h2><hr/>
+
+
+      <form ng-submit='addContact(contact)'>
+        <div class="columns medium-2">
+          Name:
+        </div>
+        <div class="columns medium-10">
+          <input ng-model='contact.name' type="text"/>
+        </div>
+        <div class="columns medium-2">
+          Email:
+        </div>
+        <div class="columns medium-10">
+          <input ng-model='contact.email' type="text"/>
+        </div>
+        <div class="row">
+
+          <div class="medium-12 columns">
+            <button class='button small radius right' type='submit'>Add Email</button>
+          </div>
+        </div>
+        <p>{{emailMessage}}</p>
+      </form>
+    </div>
   </div>
-  <div class="column">
+</div>
+
+
+<div class="columns medium-4">
+  <div class="panel">
+
+    <h2>Send An Email</h2><hr/>
+
     <form ng-submit='sendEmail(Email)'>
-      <p align='right'>Your Email: <input ng-model='Email.sender' type="text"/> </p>
-      <p align='right'>Subject: <input type='text' ng-model='Email.subject'/></p>
+      <div class="columns medium-3">
+        Sender:
+      </div>
+      <div class="columns medium-9">
+        <input ng-model='Email.sender' type="text"/>
+      </div>
+      <div class="columns medium-3">
+        Subject:
+      </div>
+      <div class="columns medium-9">
+        <input ng-model='Email.subject' type="text"/>
+      </div>
       <textarea ng-model='Email.body' rows="8" cols="40"></textarea>
-      <p> Send email to
-        <select ng-model='Email.receiver'>
-          <option ng-repeat='email in emails' value={{email.email}}>
-            {{email.name}}
-          </option>
-        </select>
-        <button type='submit'>Send</button>
+      <div class="row">
+
+        <div class="columns medium-12">
+          Send email to:
+        </div>
+        <div class="columns medium-8">
+
+          <select ng-model='Email.receiver'>
+            <option ng-repeat='contact in contacts' value={{contact.email}}>
+              {{contact.name}}
+            </option>
+          </select>
+        </div>
+        <div class="medium-4 columns">
+          <button type='submit radius button small'>Send</button>
+        </div>
       </p>
       <p>{{message}}</p>
     </form>

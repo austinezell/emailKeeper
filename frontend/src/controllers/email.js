@@ -1,18 +1,18 @@
-app.controller('emailCtrl', function($scope, $rootScope, Emails) {
-  $scope.message = ""
-  $scope.getEmails = function(){
-    Emails.getEmails().then(function(data) {
-      $scope.emails = data.data
+app.controller('MainCtrl', function($scope, $rootScope, Contacts) {
+
+  $scope.getContacts = function(){
+    Contacts.getContacts().then(function(data) {
+      $scope.contacts = data.data
     })
   }
 
-  $scope.addEmail = function(name, email) {
-    if(Emails.validateEmail(email)){
-      Emails.addEmail(name, email).then(function(data){
-        $scope.getEmails()
+  $scope.addContact = function(contact) {
+    if(Contacts.validateEmail(contact.email)){
+      Contacts.addContact(contact).then(function(data){
+        $scope.getContacts()
         $scope.name = ''
         $scope.email = ''
-        $scope.emailMessage = "Email added!"
+        $scope.emailMessage = "Contact added!"
       })
     }
     else{
@@ -20,9 +20,9 @@ app.controller('emailCtrl', function($scope, $rootScope, Emails) {
     }
   }
 
-  $scope.deleteEmail = function(id){
-    Emails.deleteEmail(id).then(function(){
-      $scope.getEmails();
+  $scope.deleteContact = function(id){
+    Contacts.deleteContact(id).then(function(){
+      $scope.getContacts();
     })
   }
 
@@ -38,7 +38,7 @@ app.controller('emailCtrl', function($scope, $rootScope, Emails) {
     })
   }
 
-  $scope.getEmails();
+  $scope.getContacts();
 
 
 })
